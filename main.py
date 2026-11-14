@@ -15,7 +15,7 @@ TO_ADDRESS = os.getenv("GMAIL_USER")
 
 # Get data from API
 url = (f"https://newsapi.org/v2/everything?q={topic}&from=2026-10-14"
-       f"&apiKey={NEWS_API_KEY}")
+       f"&apiKey={NEWS_API_KEY}&language=en&sortBy=publishedAt")
 response = requests.get(url)
 data = response.json()
 
