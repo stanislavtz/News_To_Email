@@ -24,7 +24,8 @@ body_parts = []
 for article in data["articles"]:
     title = article["title"] or ""
     description = article["description"] or ""
-    body_parts.append(f"Title:\n{title}\n\nDescription:\n{description}")
+    link = article["url"] or ""
+    body_parts.append(f"Title:\n{title}\n\nDescription:\n{description}\n{link}")
 
 body = ("\n\n" + "-" * 140 + "\n\n").join(body_parts)
 
