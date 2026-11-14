@@ -1,16 +1,17 @@
-# This is a sample Python script.
+from dotenv import load_dotenv
+import os
+import requests
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+topic = input("Enter topic you are interested in: ")
 
+load_dotenv()
+news_api_key = os.getenv("NEWS_API_KEY")
+#
+url = (f"https://newsapi.org/v2/everything?q={topic}&from=2026-10-14&"
+       f"apiKey={news_api_key}")
+response = requests.get(url)
+data = response.json()
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+for article in data["articles"]:
+    print(article["title"])
+    print(article["description"])
